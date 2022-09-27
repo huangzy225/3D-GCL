@@ -1,1 +1,1 @@
-# Towards Scalable Unpaired Virtual Try-On via Patch-Routed Spatially-Adaptive GAN
+# Towards Hard-pose Virtual Try-on via 3D-aware Global Correspondence Learning
