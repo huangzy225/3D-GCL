@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0,1,2,3 python train_tryon.py --name train_tryon --phase train --dataset_mode smpl512psw --gpu_ids 0,1,2,3 --batchSize 8 --model StyleGAN2Tryon --netG Stylegan2 --dataroot YOUR_DATA_PATH/Deepfashion_512_320 --netCorr GlobalHD 
