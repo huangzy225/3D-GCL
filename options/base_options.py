@@ -24,8 +24,8 @@ class BaseOptions():
         parser.add_argument('--num_gpus', type=int, default='1', help='number of gpus in parallel')
         parser.add_argument('--checkpoints_dir', type=str, default='./checkpoints', help='models are saved here')
         parser.add_argument('--model', type=str, default='pix2pix', help='which model to use')
-        parser.add_argument('--norm_G', type=str, default='spectralinstance', help='instance normalization or batch normalization')
-        parser.add_argument('--norm_E', type=str, default='spectralinstance', help='instance normalization or batch normalization')
+        parser.add_argument('--norm_G', type=str, default='spadesynbatch3x3', help='instance normalization or batch normalization')
+        parser.add_argument('--norm_E', type=str, default='sync_batch', help='instance normalization or batch normalization')
         parser.add_argument('--phase', type=str, default='train', help='train, val, test, etc')
         # input/output sizes
         parser.add_argument('--batchSize', type=int, default=4, help='input batch size')
@@ -38,7 +38,7 @@ class BaseOptions():
         # for setting inputs
         parser.add_argument('--dataroot', type=str, default='dataset/deepfashionHD')
         parser.add_argument('--dataset_mode', type=str, default='deepfashionHD')
-        parser.add_argument('--no_flip', action='store_true', help='if specified, do not flip the images for data argumentation')
+        parser.add_argument('--no_flip', type=bool, default=True, help='if specified, do not flip the images for data argumentation')
         parser.add_argument('--nThreads', default=16, type=int, help='# threads for loading data')
         parser.add_argument('--max_dataset_size', type=int, default=sys.maxsize, help='Maximum number of samples allowed per dataset. If the dataset directory contains more than max_dataset_size, only a subset is loaded.')
         parser.add_argument('--load_from_opt_file', action='store_true', help='load the options from checkpoints and use that as default')
@@ -51,13 +51,11 @@ class BaseOptions():
         # for instance-wise features
         parser.add_argument('--match_kernel', type=int, default=1, help='correspondence matrix match kernel size')
         parser.add_argument('--featEnc_kernel', type=int, default=3, help='kernel size in domain adaptor')
-        parser.add_argument('--PONO', action='store_true', help='use positional normalization ')
-        parser.add_argument('--PONO_C', action='store_true', help='use C normalization in corr module')
         parser.add_argument('--vgg_normal_correct', action='store_true', help='if true, correct vgg normalization and replace vgg FM model with ctx model')
         parser.add_argument('--video_like', action='store_true', help='useful in deepfashion')
         parser.add_argument('--amp', action='store_true', help='use torch.cuda.amp')
         parser.add_argument('--temperature', type=float, default=0.01)
-        parser.add_argument('--iteration_count', type=int, default=5)
+        parser.add_argument('--iteration_count', type=int, default=2)
         parser.add_argument('--input_size', type=str, default='256_192')
 
         self.initialized = True
