@@ -52,7 +52,7 @@ class DeepfashionDataset(Pix2pixDataset):
         img_res = opt.input_size 
         self.img_h, self.img_w= img_res.split('_')
 
-        pairs_file = pd.read_csv('./data/train_psw512.csv')
+        pairs_file = pd.read_csv(os.path.join(opt.dataroot,'train_psw512.csv'))
         self.pairs = []
         self.sources = {}
         print('Loading data pairs ...')

@@ -52,9 +52,9 @@ class SMPL512pswDataset(Pix2pixDataset):
         img_res = opt.input_size 
         self.img_h, self.img_w= img_res.split('_')
         if opt.phase == 'test':
-            pairs_file = pd.read_csv('./data/test_psw512.csv')
+            pairs_file = pd.read_csv(os.path.join(opt.dataroot,'test_psw512.csv'))
         else:
-            pairs_file = pd.read_csv('./data/train_psw512.csv')
+            pairs_file = pd.read_csv(os.path.join(opt.dataroot,'train_psw512.csv'))
 
         self.pairs = []
         self.sources = {}
